@@ -112,7 +112,7 @@
 .cell {
     overflow:hidden;
     color: rgba(24, 131, 131, 0.4);
-    font-family: christmasFontNumbers ,Arial, sans-serif;
+    
 
     min-height: 0;
     text-align: center;
@@ -131,7 +131,8 @@
     text-align: right;
 }
 
-.front p, .back p{
+.front .advent-day, .back .advent-day{
+    font-family: christmasFontNumbers ,Arial, sans-serif;
     position: absolute;
     bottom:0;
     right:0;
@@ -146,6 +147,10 @@
     max-width:64px;
     opacity: 0.2;
     
+}
+
+.back{
+    box-shadow: inset 0 0 10px #000000a5;
 }
 
 .cell .front{
@@ -179,7 +184,7 @@ cursor:pointer;
     h1{
         font-size: 15vw;
     }
-    .cell {
+    .advent-day {
         font-size: 18vw;
     }
     
@@ -199,7 +204,7 @@ cursor:pointer;
         font-size: 10vw;
     }
 
-    .cell {
+    .advent-day {
         font-size: 12vw;
     }
     .front img{
@@ -216,7 +221,7 @@ cursor:pointer;
     h1{
         font-size: 5vw;
     }
-    .cell {
+    .advent-day {
         font-size: 7vw;
     }
 }

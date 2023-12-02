@@ -88,6 +88,14 @@ if (isset($_COOKIE["user_cookie"])) {
 }
 
 
+if (isset($_GET['day'])) {
+    $received_day = urldecode($_GET['day']);
+   // echo "Received day: " . $received_day;
+} else {
+    echo "Day not set";
+}
+
+
 // Assuming you have a database connection established
 $servername = "localhost";
 $username = "root";
@@ -102,18 +110,43 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+
+// Query database to get the user's data
+$sql = "SELECT * FROM advent_calendar WHERE username = '$inputted_username'";
+$result = $conn->query($sql);
+
+
+if ($result->num_rows > 0) {
+    // User found, display their calendar data
+    $row = $result->fetch_assoc();
+    // Display the calendar data as needed
+
+}
+
+$day_status = $row["day_$received_day"];
+if($day_status == 0){
+    echo "<h2 style='color: red'> Tuto odměnu jsi zmeškal/a :( </h2>";
+}
+else{
+    echo "<h2 style='color: green'> Tuto odměnu jsi již získal/a :) </h2>";
+}
+
+
+
+/*
 if(date('j')>24){
     $currentDay =24;
 }
 else{
     $currentDay = date('j');
 }
+*/
 
 
 
 
 
-$sql = "SELECT d" . $currentDay . " FROM advent_rewards WHERE id = '1'";
+$sql = "SELECT d" . $received_day . " FROM advent_rewards WHERE id = '1'";
 $result = $conn->query($sql);
 
 if ($result && $result->num_rows > 0) {
@@ -121,14 +154,13 @@ if ($result && $result->num_rows > 0) {
     $row = $result->fetch_assoc();
 
     // Access the value from the fetched row
-    $textElement = $row["d" . $currentDay];
+    $textElement = $row["d" . $received_day];
     
     echo "<h1>" . $textElement . "</h1>";
 } else {
     echo "Ajaj, něco se pokazilo! Vyscreenuj to a pošli to vedoucí :)";
 }
-$sql = "UPDATE advent_calendar SET day_$currentDay = 1 WHERE username = '$inputted_username' AND day_$currentDay = -1";
-$result = $conn->query($sql);
+
 
 
 $conn->close();

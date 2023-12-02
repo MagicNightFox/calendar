@@ -106,41 +106,43 @@ foreach ($arrayOfDays as $day){
                 echo '<a href="reward.php"><div class=cell id="day-1">
             <div class="front")">
             <img src="img/christmas-' . $randomNumber . '.png" />
-            <p>'. $day .'</p>
+            <p class="advent-day">'. $day .'</p>
             </div>
-            <div class="back"></div>
+            <div class="back tobeclaimed"></div>
         </div></a>';
             }
             else{
                 echo '<div class=cell id="day-1">
             <div class="front")">
             <img src="img/christmas-' . $randomNumber . '.png" />
-            <p>'. $day .'</p>
+            <p class="advent-day">'. $day .'</p>
             </div>
-            <div class="back"></div>
+            <div class="back tobeclaimed"></div>
         </div>';
             }
             break;
         
         case 0:
-            echo '<div class=cell id="day0">
-            <div class="back unclaimed"><p>'. $day .'</p> </div>
-        </div>';
+            echo '<a href="reward_history.php?day=' . urlencode($day) . '"><div class="cell" id="day1">
+            <div class="back unclaimed"><p class="advent-day">'. $day .'</p></div>
+        </div></a>';
             break;
 
         case 1:
-            echo '<div class=cell id="day1">
-            <div class="back claimed"><p>'. $day .'</p></div>
-        </div>';
+            echo '<a href="reward_history.php?day=' . urlencode($day) . '"><div class="cell" id="day1">
+            <div class="back claimed">
+            <p class="advent-day">'. $day .'</p>
+            </div>
+        </div></a>';
             break;
 
         default: 
         echo '<div class=cell id="day-1">
         <div class="front")">
         <img src="img/christmas-' . $randomNumber . '.png" />
-        <p>'. $day .'</p>
+        <p class="advent-day">'. $day .'</p>
         </div>
-        <div class="back"></div>
+        <div class="back tobeclaimed"></div>
     </div>';
             break;
     }
