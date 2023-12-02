@@ -91,10 +91,10 @@ if (isset($_COOKIE["user_cookie"])) {
 
 
 // Assuming you have a database connection established
-$servername = "sql5.webzdarma.cz:3306";
-$username = "dreamanimals5685";
-$password = "K#B2szK(&2J*uq3^Y0vx";
-$dbname = "dreamanimals5685";
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "ufonek_advent";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

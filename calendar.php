@@ -8,14 +8,9 @@
 </head>
 <body>
     <div class="main">
-
-
-
-
 <?php
 
-
-
+//check today's date
 if(date('j')>25){
     $currentDay =25;
 }
@@ -23,29 +18,20 @@ else{
     $currentDay = date('j');
 }
 
-
-//get the username the user inputted in the form previously
-//$inputted_username = $_POST['username'];
-
+// check if user has username inputted
 if (isset($_COOKIE["user_cookie"])) {
     $inputted_username = $_COOKIE["user_cookie"];
 
-    // Use $inputted_username as needed
-    //echo "Data retrieved from cookie: " . $inputted_username;
 } else {
     echo "Cookie not set or expired";
     header("Location: index.html");
     exit();
 }
 
-
-
-
-// Assuming you have a database connection established
-$servername = "sql5.webzdarma.cz:3306";
-$username = "dreamanimals5685";
-$password = "K#B2szK(&2J*uq3^Y0vx";
-$dbname = "dreamanimals5685";
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "ufonek_advent";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -62,13 +48,7 @@ for ($day = 1; $day<$currentDay; $day++){
     $conn->query($sql);
 }
 
-/*
-if ($conn->query($sql) === TRUE) {
-    echo "Records updated successfully";
-} else {
-    echo "Error updating records: " . $conn->error;
-}
-*/
+
 
 // Query database to get the user's data
 $sql = "SELECT * FROM advent_calendar WHERE username = '$inputted_username'";
@@ -187,9 +167,6 @@ foreach ($arrayOfDays as $day){
 $conn->close();
 
 ?>
-
-
-
 
     </div>
 </body>
